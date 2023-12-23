@@ -1,0 +1,50 @@
+<!-- Main app SVG rq'd -->
+<svg id="background">
+
+<!-- Stylesheet -->
+  <defs>
+    <link rel="stylesheet" href="styles.css" />
+  </defs>
+
+<!-- Launch screen -->
+  <svg id="start">
+  <!-- Gradient background for launch screen -->
+    <use href="#app-gradient-background" class="app-gradient-background application-fill" apply-style="at-use">
+      <text id="start-select">Which team starts?</text>
+      <svg id="you-container">
+        <rect id="you-button"/>
+        <text id="you-text">You</text>
+      </svg>
+      <svg id="them-container">
+        <rect id="them-button"/>
+        <text id="them-text">Them</text>
+      </svg>
+    </use>
+  </svg>
+<!-- End launch screen -->
+<!-- Main game screen -->
+  <svg id="main">
+    <!-- Serving dashboard -->
+    <text id="serving-score">0</text>
+    <text id="dash-1">-</text>
+    <text id="non-serving-score">0</text>
+    <text id="dash-2">-</text>
+    <text id="current-server">2</text>
+    <text id="team-one">0</text>
+    <line id="line"/>
+    <text id="team-two">0</text>
+    <!-- End serving dashboard -->
+    <text id="rally-winner">Rally winner?</text>
+    <svg id="winner-container">
+      <rect id="winner-button"/>
+      <text id="winner-text">You</text>
+    </svg>
+    <svg id="loser-container">
+      <rect id="loser-button"/>
+      <text id="loser-text">Them</text>
+    </svg>
+  </svg>
+  <!-- End main game -->
+
+
+</svg>

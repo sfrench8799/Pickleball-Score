@@ -1,0 +1,202 @@
+/* SVG rq'd */
+#background {
+  viewport-fill: seagreen;
+}
+
+/* Gradient defined */
+.application-fill           { fill: fb-cyan; }
+.app-gradient-background    { fill: fb-blue; }
+.foreground-fill            { fill: fb-white; }
+.background-fill            { fill: fb-black; }
+
+
+/* Launch screen */
+#start-select {
+  font-size: 40;
+  text-length: 20;
+  fill: white;
+  x: 50%;
+  y: 35%;
+  text-anchor: middle;
+}
+
+#you-container {
+  x: 0;
+  y: 67%;
+  pointer-events: visible;
+}
+
+#you-button {
+  fill: coral;
+  width: 100%;
+  height: 100%;
+  x: 0;
+  y: 0;
+}
+
+#you-text {
+  font-size: 50;
+  text-length: 4;
+  fill: white;
+  text-anchor: middle;
+  x: 25%;
+  y: 20%;
+}
+
+#them-container {
+  width: 100%;
+  x: 50%;
+  y: 67%;
+  pointer-events: visible;
+}
+
+#them-button {
+  fill: lightskyblue;
+  width: 100%;
+  height: 100%;
+  x: 0;
+  y: 0;
+}
+
+
+#them-text {
+  font-size: 50;
+  text-length: 4;
+  fill: white;
+  x: 25%;
+  y: 20%;
+  text-anchor: middle;
+}
+/* End launch screen */
+
+/* Main game screen */
+#main {
+  display: none;
+}
+
+#serving-score {
+  font-size: 40;
+  text-length: 2;
+  y: 10%;
+  x: 40%;
+  fill: white;
+  text-anchor: middle;
+}
+
+#dash-1 {
+  font-size: 40;
+  text-length: 2;
+  y: 10%;
+  x: 45%;
+  fill: white;
+  text-anchor: middle;
+}
+
+#non-serving-score {
+  font-size: 40;
+  text-length: 2;
+  y: 10%;
+  x: 50%;
+  fill: white;
+  text-anchor: middle;
+}
+
+#dash-2 {
+  font-size: 40;
+  text-length: 2;
+  y: 10%;
+  x: 55%;
+  fill: white;
+  text-anchor: middle;
+}
+
+#current-server {
+  font-size: 40;
+  text-length: 2;
+  y: 10%;
+  x: 60%;
+  fill: white;
+  text-anchor: middle;
+}
+
+#line {
+  x1: 10%;
+  y1: 35%;
+  x2: 90%;
+  y2: 35%;
+  fill: white;
+  stroke-width: 4;
+}
+
+#team-one {
+  font-size: 50;
+  text-length: 2;
+  y: 53%;
+  x: 50%;
+  fill: coral;
+  text-anchor: middle;
+}
+
+#team-two {
+  font-size: 50;
+  text-length: 2;
+  y: 27%;
+  x: 50%;
+  fill: lightskyblue;
+  text-anchor: middle;
+}
+
+#rally-winner {
+  font-size: 40;
+  text-length: 20;
+  fill: white;
+  x: 50%;
+  y: 65%;
+  text-anchor: middle;
+}
+
+#winner-container {
+  x: 0;
+  y: 67%;
+}
+
+#winner-button {
+  fill: coral;
+  width: 100%;
+  height: 100%;
+  x: 0;
+  y: 0;
+}
+
+#winner-text {
+  font-size: 50;
+  text-length: 4;
+  fill: white;
+  text-anchor: middle;
+  x: 25%;
+  y: 20%;
+}
+
+#loser-container {
+  width: 100%;
+  x: 50%;
+  y: 67%;
+}
+
+#loser-button {
+  fill: lightskyblue;
+  width: 100%;
+  height: 100%;
+  x: 0;
+  y: 0;
+}
+
+
+#loser-text {
+  font-size: 50;
+  text-length: 4;
+  fill: white;
+  x: 25%;
+  y: 20%;
+  text-anchor: middle;
+}
