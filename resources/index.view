@@ -41,7 +41,10 @@
     </svg>
     <line id="dividing-line"/>
 
-    <image id="server-line" href="test.png" />
+    <image id="server-line-1" href="server-line-1.png" />
+    <image id="server-line-2" href="server-line-2.png" />
+    <image id="server-line-3" href="server-line-3.png" />
+    <image id="server-line-4" href="server-line-4.png" />
 
     <svg id="team-two">
       <text id="team-two-server-one">S1</text>

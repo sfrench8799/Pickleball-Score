@@ -159,11 +159,36 @@
   stroke-width: 4;
 }
 
-#server-line {
+#server-line-1 {
   x: 80;
   y: 55;
   width: 150;
   height: 150;
+  display: none;
+}
+
+#server-line-2 {
+  x: 80;
+  y: 55;
+  width: 150;
+  height: 150;
+  display: none;
+}
+
+#server-line-3 {
+  x: 90;
+  y: 53;
+  width: 150;
+  height: 150;
+  display: none;
+}
+
+#server-line-4 {
+  x: 90;
+  y: 53;
+  width: 150;
+  height: 150;
+  
 }
 
 #team-two-server-one {
