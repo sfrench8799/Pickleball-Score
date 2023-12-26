@@ -4,8 +4,8 @@ const you = document.getElementById("you-container");
 const them = document.getElementById("them-container");
 const start = document.getElementById("start");
 const main = document.getElementById("main");
-const teamOne = document.getElementById("team-one");
-const teamTwo = document.getElementById("team-two");
+const teamOneScore = document.getElementById("team-one-score");
+const teamTwoScore = document.getElementById("team-two-score");
 const servingScore = document.getElementById("serving-score");
 const nonServerScore = document.getElementById("non-serving-score");
 

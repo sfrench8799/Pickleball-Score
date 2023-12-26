@@ -74,6 +74,8 @@
   display: none;
 }
 
+/* Serving dashboard */
+
 #serving-score {
   font-size: 40;
   text-length: 2;
@@ -119,6 +121,34 @@
   text-anchor: middle;
 }
 
+/* End serving dashboard */
+/* Main score */
+
+#team-one-server-two {
+  font-size: 35;
+  text-length: 2;
+  y: 53%;
+  x: 25%;
+  fill: coral;
+}
+
+#team-one-score {
+  font-size: 50;
+  text-length: 2;
+  y: 53%;
+  x: 50%;
+  fill: coral;
+  text-anchor: middle;
+}
+
+#team-one-server-one {
+  font-size: 35;
+  text-length: 2;
+  y: 53%;
+  x: 65%;
+  fill: coral;
+}
+
 #line {
   x1: 10%;
   y1: 35%;
@@ -128,16 +158,15 @@
   stroke-width: 4;
 }
 
-#team-one {
-  font-size: 50;
+#team-two-server-one {
+  font-size: 35;
   text-length: 2;
-  y: 53%;
-  x: 50%;
-  fill: coral;
-  text-anchor: middle;
+  y: 27%;
+  x: 25%;
+  fill: lightskyblue;
 }
 
-#team-two {
+#team-two-score {
   font-size: 50;
   text-length: 2;
   y: 27%;
@@ -145,6 +174,16 @@
   fill: lightskyblue;
   text-anchor: middle;
 }
+
+#team-two-server-two {
+  font-size: 35;
+  text-length: 2;
+  y: 27%;
+  x: 65%;
+  fill: lightskyblue;
+}
+
+/* End main score */
 
 #rally-winner {
   font-size: 40;
