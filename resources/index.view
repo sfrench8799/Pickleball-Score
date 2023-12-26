@@ -22,6 +22,7 @@
     </use>
   </svg>
 <!-- End launch screen -->
+
 <!-- Main game screen -->
   <svg id="main">
     <!-- Serving dashboard -->
@@ -31,13 +32,17 @@
     <text id="dash-2">-</text>
     <text id="current-server">2</text>
     <!-- End serving dashboard -->
+
     <!-- Main score -->
     <svg id="team-one">
       <text id="team-one-server-two">S2</text>
       <text id="team-one-score">0</text>
       <text id="team-one-server-one">S1</text>
     </svg>
-    <line id="line"/>
+    <line id="dividing-line"/>
+
+    <image id="server-line" href="test.png" />
+
     <svg id="team-two">
       <text id="team-two-server-one">S1</text>
       <text id="team-two-score">0</text>
