@@ -4,6 +4,8 @@ const you = document.getElementById("you-container");
 const them = document.getElementById("them-container");
 const start = document.getElementById("start");
 const main = document.getElementById("main");
+const servingDashServingScore = document.getElementById("serving-score");
+const servingDashNonServingScore = document.getElementById("non-serving-score");
 const teamOneScore = document.getElementById("team-one-score");
 const teamTwoScore = document.getElementById("team-two-score");
 const teamOneServerOne = document.getElementById("team-one-server-one");
@@ -20,27 +22,29 @@ const rallyWinnerButton = document.getElementById("winner-container");
 const rallyLoserButton = document.getElementById("loser-container");
 
 
-// Await input for who starts serving
 let startingTeam;
 let teamServing;
-let serverOne = "S1";
-let serverTwo = "S2";
 let yourTeamColor = "coral";
 let theirTeamColor = "lightskyblue";
 let rallyWinner;
 let currentServer;
+let teamOneCurrentScore = 0;
+let teamTwoCurrentScore = 0;
 
-// Main game
-function startGame() {
+// Game setup
+function setupGame() {
     start.style.display = "none";
     main.style.display = "inline";
-    // Game setup
     setServerDashboard();
     setServingArrow();
-    currentServer = 1;
-    // Active game
-
-
+    currentServer = 2;
+}
+// Main game
+function rallyComplete() {
+    updateScore();
+    // checkWinner();
+    serverSwap();
+    // arrowSwap();
 }
 
 // Adjust server dashboard based on who is serving
@@ -66,11 +70,11 @@ function setServingArrow() {
     }
 }
 
-function rallyComplete() {
-    if (rallyWinner && teamServing) {
-        serverSwap();
-    }
-}
+// Arrow change utility
+
+// function arrowSwap() {
+
+// }
 
 // Server change utility
 
@@ -95,6 +99,20 @@ function serverSwap() {
     }
 }
 
+function updateScore() {
+    console.log(currentServer === 2);
+    if (currentServer === 2) {
+        if (teamServing) {
+            teamOneCurrentScore += 1;
+            servingDashServingScore.text = teamOneCurrentScore.toString();
+            teamOneScore.text = teamOneCurrentScore.toString();
+        }
+    }
+    if (teamServing) {
+
+    }
+}
+
 // ************* Event Listeners *************
 
 // Start game select server
@@ -102,13 +120,13 @@ function serverSwap() {
 you.addEventListener("mousedown", (evt) => {
     startingTeam = 1;
     teamServing = 1; 
-    startGame();
+    setupGame();
 })
 
 them.addEventListener("mousedown", (evt) => {
     startingTeam = 0;
     teamServing = 0;
-    startGame();
+    setupGame();
 })
 
 // Rally winner input
