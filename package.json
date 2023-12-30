@@ -22,7 +22,6 @@
     "defaultLanguage": "en-US"
   },
   "scripts": {
-    "build": "fitbit-build",
-    "debug": "fitbit"
+    "build": "fitbit-build"
   }
 }

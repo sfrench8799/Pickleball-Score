@@ -230,6 +230,7 @@
 #winner-container {
   x: 0;
   y: 67%;
+  pointer-events: visible;
 }
 
 #winner-button {
@@ -253,6 +254,7 @@
   width: 100%;
   x: 50%;
   y: 67%;
+  pointer-events: visible;
 }
 
 #loser-button {

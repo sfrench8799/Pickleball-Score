@@ -39,6 +39,7 @@
       <text id="team-one-score">0</text>
       <text id="team-one-server-one">S1</text>
     </svg>
+    
     <line id="dividing-line"/>
 
     <image id="server-line-1" href="server-line-1.png" />
