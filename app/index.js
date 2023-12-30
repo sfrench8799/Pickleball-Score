@@ -27,7 +27,7 @@ let teamServing;
 let yourTeamColor = "coral";
 let theirTeamColor = "lightskyblue";
 let rallyWinner;
-let currentServer;
+let currentServer = 2;
 let teamOneCurrentScore = 0;
 let teamTwoCurrentScore = 0;
 
@@ -37,13 +37,12 @@ function setupGame() {
     main.style.display = "inline";
     setServerDashboard();
     setServingArrow();
-    currentServer = 2;
 }
 // Main game
 function rallyComplete() {
     updateScore();
     // checkWinner();
-    serverSwap();
+
     // arrowSwap();
 }
 
@@ -100,17 +99,46 @@ function serverSwap() {
 }
 
 function updateScore() {
-    console.log(currentServer === 2);
     if (currentServer === 2) {
-        if (teamServing) {
+        if (teamServing && rallyWinner) {
             teamOneCurrentScore += 1;
             servingDashServingScore.text = teamOneCurrentScore.toString();
             teamOneScore.text = teamOneCurrentScore.toString();
+            serverSwap();
+        } else if (teamServing) {
+            teamServing = 0;
+            currentServer = 1;
+        } else if (!teamServing && rallyWinner) {
+            teamTwoCurrentScore += 1;
+            servingDashServingScore.text = teamTwoCurrentScore.toString();
+            teamTwoScore.text = teamTwoCurrentScore.toString();
+            console.log("IN Here")
+            serverSwap();
+        } else if (!teamServing) {
+            teamServing = 1;
+            currentServer = 1;
+        }
+    } else {
+        
+        if (!teamServing && rallyWinner) {
+            teamOneCurrentScore += 1;
+            servingDashServingScore.text = teamOneCurrentScore.toString();
+            teamOneScore.text = teamOneCurrentScore.toString();
+            serverSwap();
+        } else {
+            currentServer = 2;
+        }        
+        
+        if (!teamServing && rallyWinner) {
+            teamTwoCurrentScore += 1;
+            servingDashServingScore.text = teamTwoCurrentScore.toString();
+            teamTwoScore.text = teamTwoCurrentScore.toString();
+            serverSwap();
+        } else {
+            currentServer = 2;
         }
     }
-    if (teamServing) {
 
-    }
 }
 
 // ************* Event Listeners *************
