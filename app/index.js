@@ -8,6 +8,11 @@ const teamOneScore = document.getElementById("team-one-score");
 const teamTwoScore = document.getElementById("team-two-score");
 const servingScore = document.getElementById("serving-score");
 const nonServerScore = document.getElementById("non-serving-score");
+const serverLineOne = document.getElementById("server-line-1");
+const serverLineTwo = document.getElementById("server-line-2");
+const serverLineThree = document.getElementById("server-line-3");
+const serverLineFour = document.getElementById("server-line-4");
+
 
 // Await input for who starts serving
 let startingTeam;
@@ -19,10 +24,12 @@ let theirTeamColor = "lightskyblue";
 function startGame() {
     start.style.display = "none";
     main.style.display = "inline";
-    setServerDashboard()
+    setServerDashboard();
+    setServingArrow();
 }
 
-// Adjust server element
+// Adjust server dashboard based on who is serving
+
 function setServerDashboard() {
     if(teamServing) {
         servingScore.style.fill = yourTeamColor;
@@ -32,6 +39,18 @@ function setServerDashboard() {
         nonServerScore.style.fill = yourTeamColor;
     }
 }   
+
+// Serving arrow
+
+function setServingArrow() {
+    if (startingTeam) {
+        serverLineThree.style.display = "inline";
+    } else {
+        serverLineOne.style.display = "inline";
+    }
+}
+
+// Start game select server
 
 you.addEventListener("mousedown", (evt) => {
     startingTeam = 1;
@@ -44,4 +63,4 @@ them.addEventListener("mousedown", (evt) => {
     teamServing = 0;
     startGame();
 })
-// git test
+
