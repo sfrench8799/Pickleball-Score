@@ -274,3 +274,13 @@
   y: 20%;
   text-anchor: middle;
 }
+
+/* End game text */
+
+#game-end {
+  display: none;
+}
+
+#game-end-winner {
+  display: none;
+}

@@ -41,7 +41,7 @@ function setupGame() {
 function rallyComplete() {
     updateScore();
     updateServerDash();
-    // checkWinner();
+    checkWinner();
 
     // arrowSwap();
 }
@@ -98,15 +98,7 @@ function serverSwap() {
     }
 }
 
-function updateServerDash() {
-    if (teamServing) {
-        servingScore.style.fill = yourTeamColor;
-        nonServerScore.style.fill = theirTeamColor;
-    } else {
-        servingScore.style.fill = theirTeamColor;
-        nonServerScore.style.fill = yourTeamColor;
-    }
-}
+// Main game functions
 
 function updateScore() {
     if (teamServing) {
@@ -145,6 +137,28 @@ function updateScore() {
         }
     }
 }
+
+
+function updateServerDash() {
+    if (teamServing) {
+        servingScore.style.fill = yourTeamColor;
+        nonServerScore.style.fill = theirTeamColor;
+    } else {
+        servingScore.style.fill = theirTeamColor;
+        nonServerScore.style.fill = yourTeamColor;
+    }
+}
+
+function checkWinner() {
+    if (teamOneCurrentScore === 11) {
+        console.log("You win!!")
+    }
+
+    if (teamTwoCurrentScore === 11) {
+        console.log("You lose!!")
+    }
+}
+
 
 // ************* Event Listeners *************
 

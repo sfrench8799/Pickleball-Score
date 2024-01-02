@@ -66,5 +66,8 @@
   </svg>
   <!-- End main game -->
 
+  <text id="game-end">Game Over</text>
+  <text id="game-end-winner"></text>
+
 
 </svg>
