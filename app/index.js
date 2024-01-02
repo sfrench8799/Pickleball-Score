@@ -42,8 +42,7 @@ function rallyComplete() {
     updateScore();
     updateServerDash();
     checkWinner();
-
-    // arrowSwap();
+    arrowSwap();
 }
 
 // Adjust server dashboard based on who is serving
@@ -71,9 +70,17 @@ function setServingArrow() {
 
 // Arrow change utility
 
-// function arrowSwap() {
-
-// }
+function arrowSwap() {
+    if (teamServing && teamOneCurrentScore % 2) {
+        console.log("Even");
+    } else if (teamServing) {
+        console.log("Odd");
+    } else if (!teamServing && teamOneCurrentScore % 2) {
+        console.log("Even");
+    } else {
+        console.log("Odd");
+    }
+}
 
 // Server change utility
 
