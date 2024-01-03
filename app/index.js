@@ -71,11 +71,11 @@ function setServingArrow() {
 // Arrow change utility
 
 function arrowSwap() {
-    if (teamServing && teamOneCurrentScore % 2) {
-        console.log("Even");
-    } else if (teamServing) {
+    if (teamServing && teamOneCurrentScore % 2 > 0 && currentServer === 1) {
+        serverLineThree.style.display = "inline";
+    } else if (teamServing && teamOneCurrentScore % 2 > 0 && currentServer === 1) {
         console.log("Odd");
-    } else if (!teamServing && teamOneCurrentScore % 2) {
+    } else if (!teamServing && teamOneCurrentScore % 2 > 0) {
         console.log("Even");
     } else {
         console.log("Odd");
