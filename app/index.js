@@ -1,4 +1,9 @@
 import * as document from "document";
+import { me as appbit } from "appbit";
+
+
+appbit.appTimeoutEnabled = false;
+console.log(appbit.appTimeoutEnabled);
 
 const you = document.getElementById("you-container");
 const them = document.getElementById("them-container");
