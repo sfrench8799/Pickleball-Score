@@ -25,6 +25,35 @@ const rallyWinnerButton = document.getElementById("winner-container");
 const rallyLoserButton = document.getElementById("loser-container");
 
 
+const mainGame = {
+
+    // Components
+    teamOne: {
+        serving: false,
+        score: 0,
+        currentServer: undefined,
+        previousServer: undefined,
+        teamColor: undefined,
+    },
+
+    teamTwo: {
+        serving: false,
+        score: 0,
+        currentServer: undefined,
+        previousServer: undefined,
+        teamColor: undefined,
+    },
+
+    // Game setup
+    setUpGame: function() {
+        start.style.display = "none";
+        main.style.display = "inline";
+        setServerDashboard();
+        setServingArrow();
+    }
+}
+
+
 let startingTeam;
 let teamServing;
 let yourTeamColor = "coral";
@@ -35,13 +64,7 @@ let teamOneCurrentScore = 0;
 let teamTwoCurrentScore = 0;
 let serverNumTracker;
 
-// Game setup
-function setupGame() {
-    start.style.display = "none";
-    main.style.display = "inline";
-    setServerDashboard();
-    setServingArrow();
-}
+
 // Main game
 function rallyComplete() {
     updateScore();
@@ -76,6 +99,9 @@ function setServingArrow() {
 // Arrow change utility
 
 function arrowSwap() {
+    if (teamServing){
+
+    }
     switch (serverNumTracker) {
         case 1:
             serverLineOne.style.display = "inline";
@@ -101,7 +127,6 @@ function arrowSwap() {
             serverLineThree.style.display = "none";
             serverLineFour.style.display = "inline";
         break;
-
     }
 }
 
@@ -195,17 +220,15 @@ function checkWinner() {
 // Start game select server
 
 you.addEventListener("mousedown", (evt) => {
-    startingTeam = 1;
-    teamServing = 1;
-    serverNumTracker = 3;
-    setupGame();
+    mainGame.teamOne.serving = true;
+    mainGame.teamTwo.serving = false;
+    mainGame.setUpGame
 })
 
 them.addEventListener("mousedown", (evt) => {
-    startingTeam = 0;
-    teamServing = 0;
-    serverNumTracker = 1;
-    setupGame();
+    mainGame.teamTwo.serving = true;
+    mainGame.teamOne.serving = false;
+    mainGame.setUpGame
 })
 
 // Rally winner input
@@ -219,4 +242,3 @@ rallyLoserButton.addEventListener("mousedown", (evt) => {
     rallyWinner = false;
     rallyComplete();
 })
-
