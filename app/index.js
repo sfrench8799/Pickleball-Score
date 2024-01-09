@@ -1,9 +1,8 @@
 import * as document from "document";
 import { me as appbit } from "appbit";
 
-
+// Stops app from timing out
 appbit.appTimeoutEnabled = false;
-console.log(appbit.appTimeoutEnabled);
 
 const you = document.getElementById("you-container");
 const them = document.getElementById("them-container");
@@ -34,6 +33,7 @@ let rallyWinner;
 let currentServer = 2;
 let teamOneCurrentScore = 0;
 let teamTwoCurrentScore = 0;
+let serverNumTracker;
 
 // Game setup
 function setupGame() {
@@ -76,14 +76,32 @@ function setServingArrow() {
 // Arrow change utility
 
 function arrowSwap() {
-    if (teamServing && teamOneCurrentScore % 2 > 0 && currentServer === 1) {
-        serverLineThree.style.display = "inline";
-    } else if (teamServing && teamOneCurrentScore % 2 > 0 && currentServer === 1) {
-        console.log("Odd");
-    } else if (!teamServing && teamOneCurrentScore % 2 > 0) {
-        console.log("Even");
-    } else {
-        console.log("Odd");
+    switch (serverNumTracker) {
+        case 1:
+            serverLineOne.style.display = "inline";
+            serverLineTwo.style.display = "none";
+            serverLineThree.style.display = "none";
+            serverLineFour.style.display = "none";
+        break;
+        case 2:
+            serverLineOne.style.display = "none";
+            serverLineTwo.style.display = "inline";
+            serverLineThree.style.display = "none";
+            serverLineFour.style.display = "none";
+        break;
+        case 3:
+            serverLineOne.style.display = "none";
+            serverLineTwo.style.display = "none";
+            serverLineThree.style.display = "inline";
+            serverLineFour.style.display = "none";
+        break;
+        case 4:
+            serverLineOne.style.display = "none";
+            serverLineTwo.style.display = "none";
+            serverLineThree.style.display = "none";
+            serverLineFour.style.display = "inline";
+        break;
+
     }
 }
 
@@ -178,13 +196,15 @@ function checkWinner() {
 
 you.addEventListener("mousedown", (evt) => {
     startingTeam = 1;
-    teamServing = 1; 
+    teamServing = 1;
+    serverNumTracker = 3;
     setupGame();
 })
 
 them.addEventListener("mousedown", (evt) => {
     startingTeam = 0;
     teamServing = 0;
+    serverNumTracker = 1;
     setupGame();
 })
 
