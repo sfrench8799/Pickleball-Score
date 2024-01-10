@@ -55,13 +55,13 @@
 
     <!-- End main score -->
     <text id="rally-winner">Rally winner?</text>
-    <svg id="winner-container">
-      <rect id="winner-button"/>
-      <text id="winner-text">You</text>
+    <svg id="winner-you-container">
+      <rect id="winner-you-button"/>
+      <text id="winner-you-text">You</text>
     </svg>
-    <svg id="loser-container">
-      <rect id="loser-button"/>
-      <text id="loser-text">Them</text>
+    <svg id="winner-them-container">
+      <rect id="winner-them-button"/>
+      <text id="winner-them-text">Them</text>
     </svg>
   </svg>
   <!-- End main game -->

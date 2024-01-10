@@ -227,13 +227,13 @@
   text-anchor: middle;
 }
 
-#winner-container {
+#winner-you-container {
   x: 0;
   y: 67%;
   pointer-events: visible;
 }
 
-#winner-button {
+#winner-you-button {
   fill: coral;
   width: 100%;
   height: 100%;
@@ -241,7 +241,7 @@
   y: 0;
 }
 
-#winner-text {
+#winner-you-text {
   font-size: 50;
   text-length: 4;
   fill: white;
@@ -250,14 +250,14 @@
   y: 20%;
 }
 
-#loser-container {
+#winner-them-container {
   width: 100%;
   x: 50%;
   y: 67%;
   pointer-events: visible;
 }
 
-#loser-button {
+#winner-them-button {
   fill: lightskyblue;
   width: 100%;
   height: 100%;
@@ -266,7 +266,7 @@
 }
 
 
-#loser-text {
+#winner-them-text {
   font-size: 50;
   text-length: 4;
   fill: white;

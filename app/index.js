@@ -22,8 +22,8 @@ const serverLineOne = document.getElementById("server-line-1");
 const serverLineTwo = document.getElementById("server-line-2");
 const serverLineThree = document.getElementById("server-line-3");
 const serverLineFour = document.getElementById("server-line-4");
-const rallyWinnerButton = document.getElementById("winner-container");
-const rallyLoserButton = document.getElementById("loser-container");
+const rallyWinnerYouBtn = document.getElementById("winner-you-container");
+const rallyWinnerThemBtn = document.getElementById("winner-them-container");
 
 // Game setup
 
@@ -33,6 +33,8 @@ const gameSetup = function() {
     updateDashboard();
     updateArrowImg();
 }
+
+
 
 const mainGame = {
 
@@ -45,6 +47,8 @@ const mainGame = {
         previousServer: undefined,
         teamColor: "coral",
         servingSide: true,
+        playerOne: "S1",
+        playerTwo: "S2",
     },
 
     teamTwo: {
@@ -54,6 +58,8 @@ const mainGame = {
         previousServer: undefined,
         teamColor: "lightskyblue",
         servingSide: true,
+        playerOne: "S1",
+        playerTwo: "S2",
     },
 
 
@@ -115,41 +121,95 @@ function updateArrowImg() {
             serverLineTwo.style.display = "inline";
         } else if (teamTwo.servingSide && teamTwo.currentServer == 2) {
             resetArrowDisplay();
-            serverLineTwo.style.display = "inline";
+            serverLineOne.style.display = "inline";
         } else if (teamTwo.servingSide == false && teamTwo.currentServer == 2) {
             resetArrowDisplay();
-            serverLineOne.style.display = "inline";
+            serverLineTwo.style.display = "inline";
         }
     }
     
 }
 
+const teamOneRallyWin = function() {
+    if (teamOne.serving) {
+        teamOne.score++;
+        updateScore();
+        serverSwap();
+    } else {
+        if (teamTwo.currentServer === 1) {
+            teamTwo.previousServer = 1;
+            teamTwo.currentServer = 2;
+            serverSwap();
+        } else {
+            teamTwo.previousServer = 2;
+            teamTwo.serving = false;
+            serverSwap();
+        }
+    }
 
-const teamOne = mainGame.teamOne;
-const teamTwo = mainGame.teamTwo;
+}
 
-// Server change utility
+const teamTwoRallyWin = function () {
+    if (teamTwo.serving) {
+        teamOne.score++;
+        updateScore();
+        serverSwap();
+    } else {
+        if (teamOne.currentServer === 1) {
+            teamOne.previousServer = 1;
+            teamOne.currentServer = 2;
+            serverSwap();
+        } else {
+            teamOne.previousServer = 2;
+            teamOne.serving = false;
+            serverSwap();
+        }
+    }
+}
 
 function serverSwap() {
-    if (teamServing) {
+    if (teamOne.serving === true) {
         if (teamOneServerOne.text === "S1") {
             teamOneServerOne.text = "S2";
             teamOneServerTwo.text = "S1";
+            teamOne.servingSide = false;
         } else {
             teamOneServerOne.text = "S1";
             teamOneServerTwo.text = "S2";
+            teamOne.servingSide = true;
         }
 
     } else {
         if (teamTwoServerOne.text === "S1") {
             teamTwoServerOne.text = "S2";
             teamTwoServerTwo.text = "S1";
+            teamTwo.servingSide = false;
         } else {
             teamTwoServerOne.text = "S1";
             teamTwoServerTwo.text = "S2";
+            teamTwo.servingSide = true;
         }
     }
 }
+
+const updateScore = function() {
+    teamOneScore.text = teamOne.score.toString();
+    teamTwoScore.text = teamTwo.score.toString();
+    if (teamOne.serving) {
+        servingScore.text = teamOne.score.toString();
+        nonServerScore.text = teamTwo.score.toString();
+    } else {
+        servingScore.text = teamTwo.score.toString();
+        nonServerScore.text = teamOne.score.toString();
+    }
+}
+
+const teamOne = mainGame.teamOne;
+const teamTwo = mainGame.teamTwo;
+
+// Server change utility
+
+
 
 // Main game functions
 
@@ -231,10 +291,10 @@ teamTwoServerSelect.addEventListener("mousedown", (evt) => {
 
 // Rally winner input
 
-rallyWinnerButton.addEventListener("mousedown", (evt) => {
-    rallyComplete();
+rallyWinnerYouBtn.addEventListener("mousedown", (evt) => {
+    teamOneRallyWin();
 })
 
-rallyLoserButton.addEventListener("mousedown", (evt) => {
-    rallyComplete();
+rallyWinnerThemBtn.addEventListener("mousedown", (evt) => {
+    teamTwoRallyWin();
 })
