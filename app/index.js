@@ -9,7 +9,7 @@ const teamOneServerSelect = document.getElementById("you-container");
 const teamTwoServerSelect = document.getElementById("them-container");
 const start = document.getElementById("start");
 const main = document.getElementById("main");
-const servingDashCurrentServer = document.getElementById("current-server");
+const currentServer = document.getElementById("current-server");
 const teamOneScore = document.getElementById("team-one-score");
 const teamTwoScore = document.getElementById("team-two-score");
 const teamOneServerOne = document.getElementById("team-one-server-one");
@@ -132,61 +132,68 @@ function updateArrowImg() {
     
 }
 
-const teamOneRallyWin = function() {
+const teamOneRallyWin = function () {
     if (teamOne.serving) {
         teamOne.score++;
         updateScore();
         serverSwap();
+    } else if (teamTwo.currentServer === 1){
+        teamTwo.previousServer = 1;
+        teamTwo.currentServer = 2;
+        updateScore();
+        serverSwap();
     } else {
-        if (teamTwo.currentServer === 1) {
-            teamTwo.previousServer = 1;
-            teamTwo.currentServer = 2;
-            serverSwap();
-        } else {
-            teamTwo.previousServer = 2;
-            teamTwo.serving = false;
-            serverSwap();
-        }
+        teamTwo.previousServer = 2;
+        teamTwo.serving = false;
+        teamOne.serving = true;
+        updateScore();
+        serverSwap();
     }
-
 }
 
 const teamTwoRallyWin = function () {
     if (teamTwo.serving) {
-        teamOne.score++;
+        teamTwo.score++;
         updateScore();
         serverSwap();
+    } else if (teamOne.currentServer === 1){
+        teamOne.previousServer = 1;
+        teamOne.currentServer = 2;
+        updateScore()
+        serverSwap();
     } else {
-        if (teamOne.currentServer === 1) {
-            teamOne.previousServer = 1;
-            teamOne.currentServer = 2;
-            serverSwap();
-        } else {
-            teamOne.previousServer = 2;
-            teamOne.serving = false;
-            serverSwap();
-        }
+        teamOne.previousServer = 2;
+        teamOne.serving = false;
+        teamTwo.serving = true;
+        updateScore();
+        serverSwap();
     }
 }
 
+
 function serverSwap() {
-    if (teamOne.servingSide === true) {
-            teamOneServerOne.text = teamOne.playerOne;
-            teamOneServerTwo.text = teamOne.playerTwo;
-            teamOne.servingSide = false;
-        } else if (teamOne.servingSide === false) {
+    if (teamOne.serving) {
+        if (teamOne.servingSide === true) {
             teamOneServerOne.text = teamOne.playerTwo;
             teamOneServerTwo.text = teamOne.playerOne;
-            teamOne.servingSide = true;
-        } else if (teamTwo.servingSide === true) {
-            teamTwoServerOne.text = teamTwo.playerOne;
-            teamTwoServerTwo.text = teamTwo.playerTwo;
             teamOne.servingSide = false;
         } else {
-            teamTwoServerOne = teamTwo.playerTwo;
+            teamOneServerOne.text = teamOne.playerOne;
+            teamOneServerTwo.text = teamOne.playerTwo;
+            teamOne.servingSide = true;
+        }
+    } 
+    if (teamTwo.serving) {
+        if (teamTwo.servingSide === true) {
+            teamTwoServerOne.text = teamTwo.playerTwo;
             teamTwoServerTwo.text = teamTwo.playerOne;
+            teamTwo.servingSide = false;
+        } else {
+            teamTwoServerOne.text = teamTwo.playerOne;
+            teamTwoServerTwo.text = teamTwo.playerTwo;
             teamTwo.servingSide = true;
         }
+    }
 }
 
 const updateScore = function() {
@@ -195,9 +202,12 @@ const updateScore = function() {
     if (teamOne.serving) {
         servingScore.text = teamOne.score.toString();
         nonServerScore.text = teamTwo.score.toString();
+        currentServer.text = teamOne.currentServer.toString();
     } else {
         servingScore.text = teamTwo.score.toString();
         nonServerScore.text = teamOne.score.toString();
+        currentServer.text = teamTwo.currentServer.toString();
+
     }
 }
 
