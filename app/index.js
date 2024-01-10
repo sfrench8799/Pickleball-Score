@@ -141,13 +141,13 @@ const teamOneRallyWin = function () {
         teamTwo.previousServer = 1;
         teamTwo.currentServer = 2;
         updateScore();
-        serverSwap();
     } else {
         teamTwo.previousServer = 2;
+        teamTwo.currentServer = 1;
         teamTwo.serving = false;
         teamOne.serving = true;
         updateScore();
-        serverSwap();
+        updateDashboard();
     }
 }
 
@@ -160,13 +160,13 @@ const teamTwoRallyWin = function () {
         teamOne.previousServer = 1;
         teamOne.currentServer = 2;
         updateScore()
-        serverSwap();
     } else {
         teamOne.previousServer = 2;
+        teamOne.currentServer = 1;
         teamOne.serving = false;
         teamTwo.serving = true;
         updateScore();
-        serverSwap();
+        updateDashboard();
     }
 }
 
@@ -207,7 +207,6 @@ const updateScore = function() {
         servingScore.text = teamTwo.score.toString();
         nonServerScore.text = teamOne.score.toString();
         currentServer.text = teamTwo.currentServer.toString();
-
     }
 }
 
@@ -286,12 +285,14 @@ const teamTwo = mainGame.teamTwo;
 
 teamOneServerSelect.addEventListener("mousedown", (evt) => {
     teamOne.serving = true;
+    teamTwo.currentServer = 1;
     teamTwo.serving = false;
     gameSetup();
 })
 
 teamTwoServerSelect.addEventListener("mousedown", (evt) => {
     teamTwo.serving = true;
+    teamOne.currentServer = 1;
     teamOne.serving = false;
     gameSetup();
 })
