@@ -62,6 +62,8 @@ const mainGame = {
         playerTwo: "S2",
     },
 
+    
+
 
 }
 
@@ -168,28 +170,23 @@ const teamTwoRallyWin = function () {
 }
 
 function serverSwap() {
-    if (teamOne.serving === true) {
-        if (teamOneServerOne.text === "S1") {
-            teamOneServerOne.text = "S2";
-            teamOneServerTwo.text = "S1";
+    if (teamOne.servingSide === true) {
+            teamOneServerOne.text = teamOne.playerOne;
+            teamOneServerTwo.text = teamOne.playerTwo;
+            teamOne.servingSide = false;
+        } else if (teamOne.servingSide === false) {
+            teamOneServerOne.text = teamOne.playerTwo;
+            teamOneServerTwo.text = teamOne.playerOne;
+            teamOne.servingSide = true;
+        } else if (teamTwo.servingSide === true) {
+            teamTwoServerOne.text = teamTwo.playerOne;
+            teamTwoServerTwo.text = teamTwo.playerTwo;
             teamOne.servingSide = false;
         } else {
-            teamOneServerOne.text = "S1";
-            teamOneServerTwo.text = "S2";
-            teamOne.servingSide = true;
-        }
-
-    } else {
-        if (teamTwoServerOne.text === "S1") {
-            teamTwoServerOne.text = "S2";
-            teamTwoServerTwo.text = "S1";
-            teamTwo.servingSide = false;
-        } else {
-            teamTwoServerOne.text = "S1";
-            teamTwoServerTwo.text = "S2";
+            teamTwoServerOne = teamTwo.playerTwo;
+            teamTwoServerTwo.text = teamTwo.playerOne;
             teamTwo.servingSide = true;
         }
-    }
 }
 
 const updateScore = function() {
