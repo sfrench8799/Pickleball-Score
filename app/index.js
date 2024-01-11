@@ -31,7 +31,6 @@ const gameSetup = function() {
     start.style.display = "none";
     main.style.display = "inline";
     updateDashboard();
-    updateArrowImg();
 }
 
 
@@ -45,6 +44,7 @@ const mainGame = {
         score: 0,
         currentServer: 2,
         previousServer: undefined,
+        sideOut: undefined,
         teamColor: "coral",
         servingSide: true,
         playerOne: "S1",
@@ -56,6 +56,7 @@ const mainGame = {
         score: 0,
         currentServer: 2,
         previousServer: undefined,
+        sideOut: undefined,
         teamColor: "lightskyblue",
         servingSide: true,
         playerOne: "S1",
@@ -99,54 +100,97 @@ function resetArrowDisplay() {
 }
 
 // Arrow change utility
+
 function updateArrowImg() {
-    if (teamOne.serving){
-        if (teamOne.servingSide && teamOne.currentServer == 1) {
-            resetArrowDisplay();
-            serverLineThree.style.display = "inline";
-        } else if (teamOne.servingSide == false && teamOne.currentServer == 1) {
+    if (teamOne.serving) {
+        if (serverLineThree.style.display == "inline") {
             resetArrowDisplay();
             serverLineFour.style.display = "inline";
-        } else if (teamOne.servingSide && teamOne.currentServer == 2) {
+        } else {
             resetArrowDisplay();
             serverLineThree.style.display = "inline";
-        } else if (teamOne.servingSide == false && teamOne.currentServer == 2) {
-            resetArrowDisplay();
-            serverLineFour.style.display = "inline";
-        }
-    } else {
-        if (teamTwo.servingSide && teamTwo.currentServer == 1) {
-            resetArrowDisplay();
-            serverLineOne.style.display = "inline";
-        } else if (teamTwo.servingSide == false && teamTwo.currentServer == 1) {
-            resetArrowDisplay();
-            serverLineTwo.style.display = "inline";
-        } else if (teamTwo.servingSide && teamTwo.currentServer == 2) {
-            resetArrowDisplay();
-            serverLineOne.style.display = "inline";
-        } else if (teamTwo.servingSide == false && teamTwo.currentServer == 2) {
-            resetArrowDisplay();
-            serverLineTwo.style.display = "inline";
         }
     }
-    
+
+    if (teamTwo.serving) {
+        if (serverLineOne.style.display == "inline") {
+            resetArrowDisplay();
+            serverLineTwo.style.display = "inline";
+        } else {
+            resetArrowDisplay();
+            serverLineOne.style.display = "inline";
+        }
+    }
+    // if (teamOne.serving){
+    //     if (teamOne.currentServer === 1 && teamOneServerOne.text === teamOne.playerOne) {
+    //         if (teamOne.servingSide) {
+    //             resetArrowDisplay();
+    //             serverLineThree.style.display = "inline";
+    //         } else {
+    //             resetArrowDisplay();
+    //             serverLineFour.style.display = "inline";
+    //         }
+    //     if (teamOne.currentServer === 1 && teamOneServerOne.text === teamOne.playerTwo) {
+    //         if (teamOne.servingSide === false) {
+    //             resetArrowDisplay();
+    //             serverLineThree.style.display = "inline";
+    //         } else {
+    //             resetArrowDisplay();
+    //             serverLineFour.style.display = "inline";
+    //         } 
+        
+    //     if (teamOne.currentServer === 2 && teamOneServerOne.text === teamOne.playerOne) {
+    //         if (teamOne.servingSide) {
+    //             resetArrowDisplay();
+    //             serverLineFour.style.display = "inline";
+    //         } else {
+    //             resetArrowDisplay();
+    //             serverLineThree.style.display = "inline";
+    //         } 
+    //     }
+    //     } else {
+    //         if (teamOne.servingSide && (teamOne.score + 2) % 2 < 1) {
+    //             resetArrowDisplay();
+    //             serverLineThree.style.display = "inline";
+    //         } else {
+    //             resetArrowDisplay();
+    //             serverLineFour.style.display = "inline";
+    //         } 
+    //     }
+    // } else {
+    //     if (teamTwo.currentServer === 1) {
+    //         if (teamTwo.servingSide && (teamTwo.score + 2) % 2 < 1) {
+    //             resetArrowDisplay();
+    //             serverLineOne.style.display = "inline";
+    //         } else {
+    //             resetArrowDisplay();
+    //             serverLineTwo.style.display = "inline";
+    //         } 
+    //     } else {
+    //         if (teamTwo.servingSide && (teamTwo.score + 2) % 2 < 1) {
+    //             resetArrowDisplay();
+    //             serverLineOne.style.display = "inline";
+    //         } else {
+    //             resetArrowDisplay();
+    //             serverLineTwo.style.display = "inline";
+    //         } 
+    //     }
+        
+    // }
 }
 
 const teamOneRallyWin = function () {
     if (teamOne.serving) {
         teamOne.score++;
-        updateScore();
         serverSwap();
     } else if (teamTwo.currentServer === 1){
         teamTwo.previousServer = 1;
         teamTwo.currentServer = 2;
-        updateScore();
     } else {
         teamTwo.previousServer = 2;
         teamTwo.currentServer = 1;
         teamTwo.serving = false;
         teamOne.serving = true;
-        updateScore();
         updateDashboard();
     }
 }
@@ -154,18 +198,15 @@ const teamOneRallyWin = function () {
 const teamTwoRallyWin = function () {
     if (teamTwo.serving) {
         teamTwo.score++;
-        updateScore();
         serverSwap();
     } else if (teamOne.currentServer === 1){
         teamOne.previousServer = 1;
         teamOne.currentServer = 2;
-        updateScore()
     } else {
         teamOne.previousServer = 2;
         teamOne.currentServer = 1;
         teamOne.serving = false;
         teamTwo.serving = true;
-        updateScore();
         updateDashboard();
     }
 }
@@ -213,60 +254,6 @@ const updateScore = function() {
 const teamOne = mainGame.teamOne;
 const teamTwo = mainGame.teamTwo;
 
-// Server change utility
-
-
-
-// Main game functions
-
-// function updateScore() {
-//     if (teamServing) {
-//         if (rallyWinner) {
-//             teamOneCurrentScore += 1;
-//             servingScore.text = teamOneCurrentScore.toString();
-//             nonServerScore.text = teamTwoCurrentScore.toString();
-//             teamOneScore.text = teamOneCurrentScore.toString();
-//             serverSwap();
-//         } else if (currentServer === 1 && !rallyWinner){
-//             currentServer = 2;
-//             servingDashCurrentServer.text = currentServer.toString();
-//         } else {
-//             currentServer = 1;
-//             teamServing = 0;
-//             servingScore.text = teamTwoCurrentScore.toString();
-//             nonServerScore.text = teamOneCurrentScore.toString();
-//             servingDashCurrentServer.text = currentServer.toString();
-//         }
-//     } else {
-//         if (!rallyWinner) {
-//             teamTwoCurrentScore += 1;
-//             nonServerScore.text = teamOneCurrentScore.toString();
-//             servingScore.text = teamTwoCurrentScore.toString();
-//             teamTwoScore.text = teamTwoCurrentScore.toString();
-//             serverSwap();
-//         } else if (currentServer === 1 && rallyWinner){
-//             currentServer = 2;
-//             servingDashCurrentServer.text = currentServer.toString();
-//         } else {
-//             currentServer = 1;
-//             teamServing = 1;
-//             nonServerScore.text = teamTwoCurrentScore.toString();
-//             servingScore.text = teamOneCurrentScore.toString();
-//             servingDashCurrentServer.text = currentServer.toString();
-//         }
-//     }
-// }
-
-
-// function updateServerDash() {
-//     if (teamServing) {
-//         servingScore.style.fill = yourTeamColor;
-//         nonServerScore.style.fill = theirTeamColor;
-//     } else {
-//         servingScore.style.fill = theirTeamColor;
-//         nonServerScore.style.fill = yourTeamColor;
-//     }
-// }
 
 // function checkWinner() {
 //     if (teamOneCurrentScore === 11) {
@@ -287,6 +274,7 @@ teamOneServerSelect.addEventListener("mousedown", (evt) => {
     teamOne.serving = true;
     teamTwo.currentServer = 1;
     teamTwo.serving = false;
+    serverLineThree.style.display = "inline";
     gameSetup();
 })
 
@@ -294,15 +282,21 @@ teamTwoServerSelect.addEventListener("mousedown", (evt) => {
     teamTwo.serving = true;
     teamOne.currentServer = 1;
     teamOne.serving = false;
+    serverLineOne.style.display = "inline";
     gameSetup();
 })
 
 // Rally winner input
 
+// ****updateScore() must come after teamRallyWin() to ensure proper score.****
 rallyWinnerYouBtn.addEventListener("mousedown", (evt) => {
     teamOneRallyWin();
+    updateScore();
+    updateArrowImg();
 })
 
 rallyWinnerThemBtn.addEventListener("mousedown", (evt) => {
     teamTwoRallyWin();
+    updateScore();
+    updateArrowImg();
 })
