@@ -24,6 +24,8 @@ const serverLineThree = document.getElementById("server-line-3");
 const serverLineFour = document.getElementById("server-line-4");
 const rallyWinnerYouBtn = document.getElementById("winner-you-container");
 const rallyWinnerThemBtn = document.getElementById("winner-them-container");
+const endGameScreen = document.getElementById("game-end");
+const gameWinner = document.getElementById("game-end-winner");
 
 // Game setup
 
@@ -62,22 +64,8 @@ const mainGame = {
         playerOne: "S1",
         playerTwo: "S2",
     },
-
-    
-
-
 }
 
-
-
-
-// Main game
-// function rallyComplete() {
-//     updateScore();
-//     updateServerDash();
-//     checkWinner();
-//     arrowSwap();
-// }
 
 // Adjust server dashboard based on who is serving
 
@@ -121,62 +109,6 @@ function updateArrowImg() {
             serverLineOne.style.display = "inline";
         }
     }
-    // if (teamOne.serving){
-    //     if (teamOne.currentServer === 1 && teamOneServerOne.text === teamOne.playerOne) {
-    //         if (teamOne.servingSide) {
-    //             resetArrowDisplay();
-    //             serverLineThree.style.display = "inline";
-    //         } else {
-    //             resetArrowDisplay();
-    //             serverLineFour.style.display = "inline";
-    //         }
-    //     if (teamOne.currentServer === 1 && teamOneServerOne.text === teamOne.playerTwo) {
-    //         if (teamOne.servingSide === false) {
-    //             resetArrowDisplay();
-    //             serverLineThree.style.display = "inline";
-    //         } else {
-    //             resetArrowDisplay();
-    //             serverLineFour.style.display = "inline";
-    //         } 
-        
-    //     if (teamOne.currentServer === 2 && teamOneServerOne.text === teamOne.playerOne) {
-    //         if (teamOne.servingSide) {
-    //             resetArrowDisplay();
-    //             serverLineFour.style.display = "inline";
-    //         } else {
-    //             resetArrowDisplay();
-    //             serverLineThree.style.display = "inline";
-    //         } 
-    //     }
-    //     } else {
-    //         if (teamOne.servingSide && (teamOne.score + 2) % 2 < 1) {
-    //             resetArrowDisplay();
-    //             serverLineThree.style.display = "inline";
-    //         } else {
-    //             resetArrowDisplay();
-    //             serverLineFour.style.display = "inline";
-    //         } 
-    //     }
-    // } else {
-    //     if (teamTwo.currentServer === 1) {
-    //         if (teamTwo.servingSide && (teamTwo.score + 2) % 2 < 1) {
-    //             resetArrowDisplay();
-    //             serverLineOne.style.display = "inline";
-    //         } else {
-    //             resetArrowDisplay();
-    //             serverLineTwo.style.display = "inline";
-    //         } 
-    //     } else {
-    //         if (teamTwo.servingSide && (teamTwo.score + 2) % 2 < 1) {
-    //             resetArrowDisplay();
-    //             serverLineOne.style.display = "inline";
-    //         } else {
-    //             resetArrowDisplay();
-    //             serverLineTwo.style.display = "inline";
-    //         } 
-    //     }
-        
-    // }
 }
 
 const teamOneRallyWin = function () {
@@ -210,7 +142,6 @@ const teamTwoRallyWin = function () {
         updateDashboard();
     }
 }
-
 
 function serverSwap() {
     if (teamOne.serving) {
@@ -251,19 +182,24 @@ const updateScore = function() {
     }
 }
 
+function checkWinner() {
+    if (teamOne.score > 10 && teamOne.score - teamTwo.score > 1) {
+        main.style.display = "none";
+        endGameScreen.style.display = "inline";
+        gameWinner.text = "You win!!"
+    }
+
+    if (teamTwo.score > 10 && teamTwo.score - teamOne.score > 1) {
+        main.style.display = "none";
+        endGameScreen.style.display = "inline";
+        gameWinner.text = "You lose!!"
+    }
+}
+
 const teamOne = mainGame.teamOne;
 const teamTwo = mainGame.teamTwo;
 
 
-// function checkWinner() {
-//     if (teamOneCurrentScore === 11) {
-//         console.log("You win!!")
-//     }
-
-//     if (teamTwoCurrentScore === 11) {
-//         console.log("You lose!!")
-//     }
-// }
 
 
 // ************* Event Listeners *************
@@ -289,14 +225,17 @@ teamTwoServerSelect.addEventListener("mousedown", (evt) => {
 // Rally winner input
 
 // ****updateScore() must come after teamRallyWin() to ensure proper score.****
+// ****checkWinner() must come after updateScore() to ensure game ends properly****
 rallyWinnerYouBtn.addEventListener("mousedown", (evt) => {
     teamOneRallyWin();
     updateScore();
     updateArrowImg();
+    checkWinner();
 })
 
 rallyWinnerThemBtn.addEventListener("mousedown", (evt) => {
     teamTwoRallyWin();
     updateScore();
     updateArrowImg();
+    checkWinner();
 })

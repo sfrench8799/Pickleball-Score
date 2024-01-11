@@ -279,8 +279,8 @@
 
 #game-end {
   display: none;
+  width: 100%;
+  x: 50%;
+  y: 50%;
 }
 
-#game-end-winner {
-  display: none;
-}
