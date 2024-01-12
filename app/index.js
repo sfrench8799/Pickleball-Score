@@ -1,6 +1,7 @@
 import * as document from "document";
 import { me as appbit } from "appbit";
 
+
 // Stops app from timing out
 appbit.appTimeoutEnabled = false;
 
@@ -35,13 +36,21 @@ const gameWinner = document.getElementById("game-end-winner");
 
 const gameSetup = function() {
     start.style.display = "none";
+    mainGame.gameScreen.startScreen = false;
     main.style.display = "inline";
+    mainGame.gameScreen.mainScreen = true;
     updateDashboard();
 }
 
 const mainGame = {
 
     // Components
+
+    gameScreen: {
+        startScreen: true,
+        mainScreen: false,
+        settings: false,
+    },
     
     teamOne: {
         serving: false,
@@ -198,6 +207,16 @@ function checkWinner() {
     }
 }
 
+// Settings
+
+    function settingsUpdate(index) {
+        if(index === 2) {
+            start.style.display = "inline";
+            main.style.display = "none";
+            settingsMenu.style.display = "none";
+        }
+    }
+
 const teamOne = mainGame.teamOne;
 const teamTwo = mainGame.teamTwo;
 
@@ -245,14 +264,14 @@ rallyWinnerThemBtn.addEventListener("mousedown", (evt) => {
 // Settings
 
 items.forEach((element, index) => {
-  let touch = element.getElementById("touch");
-  touch.onclick = function(evt) {
-    console.log(`touched: ${index}`);
-  };
+    element.addEventListener("mousedown", (evt) => {
+        settingsUpdate(index);
+    })
 });
 
 settings.addEventListener("mousedown", (evt) => {
     start.style.display = "none";
+    mainGame.gameScreen.startScreen = 
     main.style.display = "none";
     settingsMenu.style.display = "inline";
 })
