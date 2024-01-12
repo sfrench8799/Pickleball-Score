@@ -1,5 +1,6 @@
 <!-- Main app SVG rq'd -->
 <svg id="background">
+<use href="#app-gradient-background" class="app-gradient-background application-fill" apply-style="at-use">
 
 <!-- Stylesheet -->
   <defs>
@@ -9,7 +10,6 @@
 <!-- Launch screen -->
   <svg id="start">
   <!-- Gradient background for launch screen -->
-    <use href="#app-gradient-background" class="app-gradient-background application-fill" apply-style="at-use">
       <text id="start-select">Which team starts?</text>
       <svg id="you-container">
         <rect id="you-button"/>
@@ -19,7 +19,7 @@
         <rect id="them-button"/>
         <text id="them-text">Them</text>
       </svg>
-    </use>
+
   </svg>
 <!-- End launch screen -->
 
@@ -41,6 +41,8 @@
     </svg>
     
     <line id="dividing-line"/>
+
+    
 
     <image id="server-line-1" href="server-line-1.png" />
     <image id="server-line-2" href="server-line-2.png" />
@@ -70,5 +72,5 @@
     <text id="game-over-text">Game Over</text>
     <text id="game-end-winner"></text>
   </svg>
-
+</use>
 </svg>

@@ -35,8 +35,6 @@ const gameSetup = function() {
     updateDashboard();
 }
 
-
-
 const mainGame = {
 
     // Components
