@@ -6,8 +6,40 @@
   <defs>
     <link rel="stylesheet" href="styles.css" />
   </defs>
+  <svg>
+    <defs>
+      <link rel="stylesheet" href="styles.css" />
+      <link rel="import" href="/mnt/sysassets/system_widget.defs" />
+  
+      <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.defs" />
+      <link rel="import" href="/mnt/sysassets/widgets/scrollbar.defs" />
+      <link rel="import" href="/mnt/sysassets/widgets/tile_list_widget.defs" />
+  
+      <symbol id="my-item" href="#tile-list-item" class="list-item">
+        <rect class="bg" />
+        <text id="text" />
+        <rect class="line" />
+        <rect id="touch" pointer-events="all" />
+      </symbol>
+  
+    </defs>
+  </svg>
 
 <!-- Settings -->
+<svg  id="settings-menu">
+  <use id="myList" href="#tile-list" class="horizontal-pad">
+    <var id="separator-height-bottom" value="6" />
+    <use id="item1" href="#my-item">
+      <set href="#text" attributeName="text-buffer" to="Text Item 1" />
+    </use>
+    <use id="item2" href="#my-item">
+      <set href="#text" attributeName="text-buffer" to="Text Item 2" />
+    </use>
+    <use id="item3" href="#my-item">
+      <set href="#text" attributeName="text-buffer" to="Text Item 3" />
+    </use>
+  </use>
+</svg>
 
 <rect id="settings-icon-container" />
 <image id="settings-icon" href="gear-solid.png" />

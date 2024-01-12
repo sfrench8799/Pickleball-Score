@@ -4,7 +4,11 @@ import { me as appbit } from "appbit";
 // Stops app from timing out
 appbit.appTimeoutEnabled = false;
 
+let list = document.getElementById("myList");
+let items = list.getElementsByClassName("list-item");
+
 const settings = document.getElementById("settings-icon-container");
+const settingsMenu = document.getElementById("settings-menu");
 const teamOneServerSelect = document.getElementById("you-container");
 const teamTwoServerSelect = document.getElementById("them-container");
 const start = document.getElementById("start");
@@ -238,6 +242,17 @@ rallyWinnerThemBtn.addEventListener("mousedown", (evt) => {
     checkWinner();
 })
 
+// Settings
+
+items.forEach((element, index) => {
+  let touch = element.getElementById("touch");
+  touch.onclick = function(evt) {
+    console.log(`touched: ${index}`);
+  };
+});
+
 settings.addEventListener("mousedown", (evt) => {
-    console.log("touched");
+    start.style.display = "none";
+    main.style.display = "none";
+    settingsMenu.style.display = "inline";
 })
