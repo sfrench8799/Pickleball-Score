@@ -6,12 +6,20 @@
 
 /* Settings */
 
+#settings-icon-container {
+  x: 50%;
+  y: 0;
+  fill: none;
+  width: 100%;
+  height: 25%;
+  pointer-events: visible;
+}
+
 #settings-icon {
   x: 80%;
   y: 5%;
   width: 40;
   height: 40;
-  pointer-events: visible;
 }
 
 /* Launch screen */

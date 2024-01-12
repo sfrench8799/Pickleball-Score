@@ -9,7 +9,7 @@
 
 <!-- Settings -->
 
-
+<rect id="settings-icon-container" />
 <image id="settings-icon" href="gear-solid.png" />
 
 <!-- Launch screen -->

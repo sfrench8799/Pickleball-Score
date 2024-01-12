@@ -4,7 +4,7 @@ import { me as appbit } from "appbit";
 // Stops app from timing out
 appbit.appTimeoutEnabled = false;
 
-const settings = document.getElementById("settings-icon");
+const settings = document.getElementById("settings-icon-container");
 const teamOneServerSelect = document.getElementById("you-container");
 const teamTwoServerSelect = document.getElementById("them-container");
 const start = document.getElementById("start");
