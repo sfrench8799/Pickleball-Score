@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="styles.css" />
   </defs>
 
+<!-- Settings -->
+
+
+<image id="settings-icon" href="gear-solid.png" />
+
 <!-- Launch screen -->
   <svg id="start">
   <!-- Gradient background for launch screen -->
@@ -21,7 +26,6 @@
       </svg>
 
   </svg>
-<!-- End launch screen -->
 
 <!-- Main game screen -->
   <svg id="main">
@@ -31,7 +35,6 @@
     <text id="non-serving-score">0</text>
     <text id="dash-2">-</text>
     <text id="current-server">2</text>
-    <!-- End serving dashboard -->
 
     <!-- Main score -->
     <svg id="team-one">
@@ -41,8 +44,6 @@
     </svg>
     
     <line id="dividing-line"/>
-
-    
 
     <image id="server-line-1" href="server-line-1.png" />
     <image id="server-line-2" href="server-line-2.png" />
@@ -55,7 +56,7 @@
       <text id="team-two-server-two">S2</text>
     </svg>
 
-    <!-- End main score -->
+    <!-- Buttons section -->
     <text id="rally-winner">Rally winner?</text>
     <svg id="winner-you-container">
       <rect id="winner-you-button"/>
@@ -66,8 +67,8 @@
       <text id="winner-them-text">Them</text>
     </svg>
   </svg>
-  <!-- End main game -->
 
+  <!-- Gameover screen -->
   <svg id="game-end">
     <text id="game-over-text">Game Over</text>
     <text id="game-end-winner"></text>

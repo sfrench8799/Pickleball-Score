@@ -4,7 +4,7 @@ import { me as appbit } from "appbit";
 // Stops app from timing out
 appbit.appTimeoutEnabled = false;
 
-
+const settings = document.getElementById("settings-icon");
 const teamOneServerSelect = document.getElementById("you-container");
 const teamTwoServerSelect = document.getElementById("them-container");
 const start = document.getElementById("start");
@@ -236,4 +236,8 @@ rallyWinnerThemBtn.addEventListener("mousedown", (evt) => {
     updateScore();
     updateArrowImg();
     checkWinner();
+})
+
+settings.addEventListener("mousedown", (evt) => {
+    console.log("touched");
 })
